@@ -2,6 +2,7 @@
   home-manager.sharedModules = lib.singleton (hm: {
     aquaris.persist = {
       ".local/share/mpd" = { };
+      "music" = { };
     };
 
     home.packages = with pkgs; [
@@ -12,7 +13,7 @@
 
     services.mpd = {
       enable = true;
-      musicDirectory = "${hm.config.home.homeDirectory}/disks/beeg/Music";
+      musicDirectory = "/home/logan/music/Downloaded Music";
       extraConfig = ''
         audio_output {
           type "pulse"

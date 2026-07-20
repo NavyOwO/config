@@ -1,76 +1,54 @@
-- music discord presence plugin for ncmpcpp
-- waybar .config and style setup
-- set background
-- windows transparent
-- rest of software downloaded 
-- find some ide for coding in c# (unity and school work) 
-- DNS splitter for log in and auth gateway for mesh)
+stuffs in backup
 
+(some audio conversion software (freac??)) --
+Flameshot -- sm is broken
 
-STEAM: [x] (reinstall everything at some point)
+Wootility (!! need to do some bash script bs i think !!)
+Gaomon tablet (s620) drivers (??)
+G hub or similar for mouse (mayb??)
 
-Apex
-Assetto
-Battlebit
-Beamng
-City Car Driving
-Contraband Police
+discord & ncmpcpp open on 2 (left monitor)
+FIX FLAMESHOT WINDOWRULE
+
+GAMES -- (native linux)
 CS2
 Deltarune
-Ducks
-ETS2
-GMOD
-Geo Dash ~~ (res fix and geode)
-Getting over it
-Half sword
-HalfLife 2
-HOI4
-Hotline miami
+Undertale
+Project Zomboid
 KSP
-marvel rivals
-msc
-papers please
-ppg
-phosimp
-pool 2d
-portal 2
-pz
-puck
-raft
-rdr2
-schedule 1
-skate
-slapshot
-super battle gold
-teardown
-tmodloader
-tabs
-trackmania
-undertale
-vrchat
-vtolvr
+Schedule 1
+Pool 2D
+GMod
+Battlebit [?]
+Meccha Chamelion [?]
+Phosimp
+Portal 2
+Puck
+Terraria
+Minecraft (java)
+Roblox (sober)
+HOI4
+TBOI
+HOTLINE MIAMI
+HL2
 
+For Windows VM ---
+VS2022
+UNITY HUB 
+GITHUB DESKTOP
+Quest 2 drivers
+G HUB
 
-librewolf ~~ (bookmarks from html)
-libreoffice
-helium (maybe find other chromium based browser for backup)
-thunderbird 
-discord [x]
-obs [x]
-syncthings
-fre:ac
-mp3tag
-vlc
-audacity
-handbrake
-gimp
-wine
-unity hub
-github
-mullvad [x]
+GAMES --
+ETS2 
+BEAMNG
+AC
+City Car driving
+Dirt rally
+MSFS2020** (and vatsim softwares)
+Apex legends
+F1 2018
+Minecraft (for windows)
+EBaseball
 
-
-epic (herioic)
-rl
-super meat boy
-cities skylines
+Vtol VR & mod loader

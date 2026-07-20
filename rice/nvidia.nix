@@ -1,5 +1,8 @@
 {
-  rice.unfreeNames = [ "nvidia-x11" ];
+  rice.unfreeNames = [
+    "nvidia-x11"
+    "nvidia-kernel-modules"
+  ];
 
   environment.sessionVariables = {
     GBM_BACKEND = "nvidia-drm";
@@ -13,7 +16,7 @@
   };
 
   hardware.nvidia = {
-    open = true;
+    open = false;
     modesetting.enable = true;
     nvidiaSettings = false;
     powerManagement.enable = true;

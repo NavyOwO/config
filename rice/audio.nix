@@ -68,4 +68,10 @@
       };
     };
   };
+
+  home-manager.sharedModules = [{
+    aquaris.persist = {
+      ".local/state/wireplumber" = { };
+    };
+  }];
 }

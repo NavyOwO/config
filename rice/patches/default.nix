@@ -4,6 +4,10 @@
     {
       nix-output-monitor = obscura.my-nom;
 
+      inherit (obscura)
+        zfullfs
+        ;
+
       inherit (obscura.nvidia.entries) nvtop;
     });
 }

@@ -2,6 +2,7 @@
   programs.hyprland.enable = true;
   services.speechd.enable = false;
 
+
   home-manager.sharedModules = lib.singleton (hm: {
     aquaris.persist = {
       ".config/dconf" = { };
@@ -35,6 +36,7 @@
             font = "monospace:size=10.5";
             include = "${pkgs.foot.themes}/share/foot/themes/gruvbox-dark";
           };
+          colors-dark.alpha = "0.5";
         };
       };
 

@@ -4,7 +4,7 @@
 }
 
 window#waybar {
-	background-color: rgb(43, 48, 59);
+	background-color: rgba(22, 40, 100, 0.9);
 	border-bottom: 3px solid rgba(100, 114, 125, 0.5);
 	color: #ffffff;
 	transition-property: background-color;
@@ -101,25 +101,24 @@ window#waybar {
 }
 
 #pulseaudio {
-	background-color: #f09b00;
+	background-color: #055df2;
+	color: #ffffff;
 }
 
 #network {
-	background-color: #e5fe02;
+	background-color: #226ff3;
 }
 
 #cpu {
-	background-color: #07c002;
+	background-color: #3b81f5;
 }
 
 #memory {
-	background-color: #031a9a;
-	color: #ffffff;
+	background-color: #4f8df6;
 }
 
 #disk {
-	background-color: #77018b;
-	color: #ffffff;
+	background-color: #7daaf8;
 }
 
 #temperature {
@@ -143,7 +142,7 @@ window#waybar {
 }
 
 #clock {
-	background-color: #603815;
+	background-color: #7d7d7b;
 	color: #ffffff;
 }
 

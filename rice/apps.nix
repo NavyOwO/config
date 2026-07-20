@@ -1,26 +1,46 @@
-{ pkgs, lib, ... }: {
+{pkgs, lib, config, ... }: {
 
   programs.steam.enable = true;
+
+  services.flatpak.enable = true;
+
+  time.timeZone = "Europe/London";
 
   rice.unfreeNames = [
     "steam"
     "steam-unwrapped"
+    "wootility"
   ];
 
-  environment.systemPackages = with pkgs; [
-    swaybg
-    flameshot
-    grim
-  ];
+  hardware.wooting.enable = true;
 
-  programs.waybar.enable = true;
+
+
+  users.users = builtins.mapAttrs
+    (_: _: { extraGroups = [ "adbusers" ]; })
+    config.aquaris.users;
 
   home-manager.sharedModules = [{
     aquaris = {
       persist = {
         ".config/equibop" = { };
+        ".config/obs-studio" = { };
+        ".config/wootility" = { };
         ".local/share/Steam" = { };
         ".local/share/chatterino" = { };
+        ".config/nicotine" = { };
+        ".config/pulse" = { };
+        ".config/chromium" = { };
+        ".config/OpenRGB" = { };
+        ".mozilla" = { };
+        ".thunderbird" = { };
+        ".config/heroic" = { };
+        ".var/app/org.vinegarhq.Sober" = { };
+        "/var/lib/flatpak/app/org.vinegarhq.Sober" = { };
+        "Games" = { };
+        ".local/share/umu" = { };
+        "OBS" = { };
+        "VMstuff" = { };
       };
 
       firefox = {
@@ -36,15 +56,39 @@
       };
     };
 
+    home.pointerCursor.enable = true;
+    services.mpd-discord-rpc.enable = true;
+
     home.packages = with pkgs; [
+      android-tools
+      ani-cli
       chatterino7
+      chromium
+      ente-auth
       equibop
+      feh
+      ffmpeg
+      flameshot
+      gimp
+      grim
+      heroic
+      kdePackages.kdenlive
+      krita
       mpv
+      mpd-discord-rpc
+      nicotine-plus
       nixpkgs-fmt
       nvtop
+      openrgb
       pulsemixer
-      qalculate-gtk
+      qbittorrent
+      swaybg
+      thunderbird
+      timezonemap
+      wine
+      wl-clipboard
       yt-dlp
+      libvirt
     ];
 
     programs = {
