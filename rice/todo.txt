@@ -1,0 +1,76 @@
+- music discord presence plugin for ncmpcpp
+- waybar .config and style setup
+- set background
+- windows transparent
+- rest of software downloaded 
+- find some ide for coding in c# (unity and school work) 
+- DNS splitter for log in and auth gateway for mesh)
+
+
+STEAM: [x] (reinstall everything at some point)
+
+Apex
+Assetto
+Battlebit
+Beamng
+City Car Driving
+Contraband Police
+CS2
+Deltarune
+Ducks
+ETS2
+GMOD
+Geo Dash ~~ (res fix and geode)
+Getting over it
+Half sword
+HalfLife 2
+HOI4
+Hotline miami
+KSP
+marvel rivals
+msc
+papers please
+ppg
+phosimp
+pool 2d
+portal 2
+pz
+puck
+raft
+rdr2
+schedule 1
+skate
+slapshot
+super battle gold
+teardown
+tmodloader
+tabs
+trackmania
+undertale
+vrchat
+vtolvr
+
+
+librewolf ~~ (bookmarks from html)
+libreoffice
+helium (maybe find other chromium based browser for backup)
+thunderbird 
+discord [x]
+obs [x]
+syncthings
+fre:ac
+mp3tag
+vlc
+audacity
+handbrake
+gimp
+wine
+unity hub
+github
+mullvad [x]
+
+
+epic (herioic)
+rl
+super meat boy
+cities skylines
