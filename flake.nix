@@ -19,13 +19,22 @@
     obscura.url = "github:42loco42/obscura";
   };
 
-  outputs = { aquaris, self, ... }: aquaris self {
+  outputs = { aquaris, self, ... }: aquaris self rec {
+    ssh = {
+      logan = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMqocEF3jCw+ceawrvg7op0qLKrW32T/gip4oGtNq8ZA";
+      nori = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBH2eZZkiQ53veJRiLi/JbVU/CD2oKC/TN7Ope3LiCChAAAABHNzaDo=";
+    };
+
     users = {
       logan = {
-        sshKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMqocEF3jCw+ceawrvg7op0qLKrW32T/gip4oGtNq8ZA logan"
-          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBH2eZZkiQ53veJRiLi/JbVU/CD2oKC/TN7Ope3LiCChAAAABHNzaDo= nori"
-        ];
+        description = "";
+
+        sshKeys = with ssh; [ logan nori ];
+
+        git = {
+          email = "loganabbitt@outlook.com";
+          key = ssh.logan;
+        };
       };
     };
   };

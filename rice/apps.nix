@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
   programs.steam.enable = true;
 
@@ -48,6 +48,8 @@
     ];
 
     programs = {
+      jujutsu.settings.signing.key = lib.mkForce "~/.ssh/id_main";
+
       obs-studio = {
         enable = true;
 
