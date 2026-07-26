@@ -8,6 +8,7 @@
   services.flatpak.enable = true;
 
   time.timeZone = "Europe/London";
+  i18n.extraLocaleSettings.LC_TIME = "en_US.UTF-8";
 
   rice.unfreeNames = [
     "steam"
