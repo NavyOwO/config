@@ -1,6 +1,6 @@
-{pkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }: {
   aquaris.persist.dirs = {
-    "/var/lib/flatpak"= { };
+    "/var/lib/flatpak" = { };
   };
 
   programs.steam.enable = true;
@@ -11,12 +11,17 @@
   i18n.extraLocaleSettings.LC_TIME = "en_US.UTF-8";
 
   rice.unfreeNames = [
+    "discord"
     "steam"
     "steam-unwrapped"
     "wootility"
+    "lunarclient"
   ];
 
-  hardware.wooting.enable = true;
+  hardware = {
+    logitech.wireless.enable = true;
+    wooting.enable = true;
+  };
 
   users.users = builtins.mapAttrs
     (_: _: { extraGroups = [ "adbusers" ]; })
@@ -29,17 +34,28 @@
         ".config/chromium" = { };
         ".config/equibop" = { };
         ".config/heroic" = { };
+        ".config/lunarclient" = { };
         ".config/nicotine" = { };
         ".config/obs-studio" = { };
         ".config/pulse" = { };
         ".config/wootility" = { };
-        ".local/share/Steam" = { };
-        ".local/share/chatterino" = { };
-        ".local/share/umu" = { };
+        ".config/discord" = { };
+
+        ".java" = { };
+        ".lunarclient" = { };
+        ".minecraft" = { };
         ".mozilla" = { };
         ".thunderbird" = { };
         ".var/app/org.vinegarhq.Sober" = { };
+
+        ".local/share/Steam" = { };
+        ".local/share/chatterino" = { };
+        ".local/share/prismlauncher" = { };
+        ".local/share/Prismlauncher" = { };
+        ".local/share/umu" = { };
+
         "Games" = { };
+        "KeptDownloads" = { };
         "OBS" = { };
         "VMstuff" = { };
       };
@@ -62,9 +78,10 @@
 
     home.packages = with pkgs; [
       android-tools
-      ani-cli
+      beyond-all-reason
       chatterino7
       chromium
+      discord
       ente-auth
       equibop
       feh
@@ -75,21 +92,23 @@
       heroic
       kdePackages.kdenlive
       krita
-      mpv
+      lunar-client
       mpd-discord-rpc
+      mpv
       nicotine-plus
       nixpkgs-fmt
       nvtop
       openrgb
+      prismlauncher
       pulsemixer
       qbittorrent
+      solaar
       swaybg
       thunderbird
       timezonemap
       wine
       wl-clipboard
       yt-dlp
-      libvirt
     ];
 
     programs = {
