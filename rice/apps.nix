@@ -1,4 +1,7 @@
 {pkgs, lib, config, ... }: {
+  aquaris.persist.dirs = {
+    "/var/lib/flatpak"= { };
+  };
 
   programs.steam.enable = true;
 
@@ -14,8 +17,6 @@
 
   hardware.wooting.enable = true;
 
-
-
   users.users = builtins.mapAttrs
     (_: _: { extraGroups = [ "adbusers" ]; })
     config.aquaris.users;
@@ -23,22 +24,21 @@
   home-manager.sharedModules = [{
     aquaris = {
       persist = {
+        ".config/OpenRGB" = { };
+        ".config/chromium" = { };
         ".config/equibop" = { };
+        ".config/heroic" = { };
+        ".config/nicotine" = { };
         ".config/obs-studio" = { };
+        ".config/pulse" = { };
         ".config/wootility" = { };
         ".local/share/Steam" = { };
         ".local/share/chatterino" = { };
-        ".config/nicotine" = { };
-        ".config/pulse" = { };
-        ".config/chromium" = { };
-        ".config/OpenRGB" = { };
+        ".local/share/umu" = { };
         ".mozilla" = { };
         ".thunderbird" = { };
-        ".config/heroic" = { };
         ".var/app/org.vinegarhq.Sober" = { };
-        "/var/lib/flatpak/app/org.vinegarhq.Sober" = { };
         "Games" = { };
-        ".local/share/umu" = { };
         "OBS" = { };
         "VMstuff" = { };
       };
