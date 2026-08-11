@@ -32,14 +32,15 @@
       persist = {
         ".config/OpenRGB" = { };
         ".config/chromium" = { };
+        ".config/discord" = { };
         ".config/equibop" = { };
         ".config/heroic" = { };
         ".config/lunarclient" = { };
         ".config/nicotine" = { };
         ".config/obs-studio" = { };
+        ".config/openttd" = { };
         ".config/pulse" = { };
         ".config/wootility" = { };
-        ".config/discord" = { };
 
         ".java" = { };
         ".lunarclient" = { };
@@ -48,10 +49,11 @@
         ".thunderbird" = { };
         ".var/app/org.vinegarhq.Sober" = { };
 
+        ".local/share/Prismlauncher" = { };
         ".local/share/Steam" = { };
         ".local/share/chatterino" = { };
+        ".local/share/openttd" = { };
         ".local/share/prismlauncher" = { };
-        ".local/share/Prismlauncher" = { };
         ".local/share/umu" = { };
 
         "Games" = { };
@@ -78,6 +80,7 @@
 
     home.packages = with pkgs; [
       android-tools
+      ardour
       beyond-all-reason
       chatterino7
       chromium
@@ -99,9 +102,11 @@
       nixpkgs-fmt
       nvtop
       openrgb
+      openttd
       prismlauncher
       pulsemixer
       qbittorrent
+      rmpc
       solaar
       swaybg
       thunderbird
