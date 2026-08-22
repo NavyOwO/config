@@ -109,6 +109,7 @@
       rmpc
       solaar
       swaybg
+      tageditor
       thunderbird
       timezonemap
       wine
