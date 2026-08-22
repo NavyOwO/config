@@ -80,12 +80,9 @@
 
     home.packages = with pkgs; [
       android-tools
-      ardour
-      beyond-all-reason
       chatterino7
       chromium
       discord
-      ente-auth
       equibop
       feh
       ffmpeg
