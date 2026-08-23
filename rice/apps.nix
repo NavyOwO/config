@@ -42,6 +42,7 @@
         ".config/pulse" = { };
         ".config/wootility" = { };
 
+        ".mixxx" = { };
         ".java" = { };
         ".lunarclient" = { };
         ".minecraft" = { };
@@ -93,6 +94,7 @@
       kdePackages.kdenlive
       krita
       lunar-client
+      mixxx
       mpd-discord-rpc
       mpv
       nicotine-plus
