@@ -114,6 +114,8 @@
       wine
       wl-clipboard
       yt-dlp
+      wireshark
+      nmap
     ];
 
     programs = {
