@@ -4,6 +4,10 @@
   };
 
   programs.steam.enable = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   services.flatpak.enable = true;
 
@@ -24,7 +28,7 @@
   };
 
   users.users = builtins.mapAttrs
-    (_: _: { extraGroups = [ "adbusers" ]; })
+    (_: _: { extraGroups = [ "adbusers" "wireshark" ]; })
     config.aquaris.users;
 
   home-manager.sharedModules = [{
@@ -114,7 +118,6 @@
       wine
       wl-clipboard
       yt-dlp
-      wireshark
       nmap
     ];
 
