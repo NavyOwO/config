@@ -119,6 +119,7 @@
       wl-clipboard
       yt-dlp
       nmap
+      dotnet-sdk
     ];
 
     programs = {
