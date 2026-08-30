@@ -65,6 +65,7 @@
         "KeptDownloads" = { };
         "OBS" = { };
         "VMstuff" = { };
+        "CodeStuff" = { };
       };
 
       firefox = {
@@ -119,7 +120,8 @@
       wl-clipboard
       yt-dlp
       nmap
-      dotnet-sdk
+      #fuck you microsoft
+      dotnet-sdk_11
     ];
 
     programs = {
