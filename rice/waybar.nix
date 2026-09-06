@@ -12,6 +12,11 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="hwmon", KERNELS=="coretemp.0", \
+    RUN+="${pkgs.coreutils}/bin/ln -sf /sys$devpath/temp1_input /dev/cpu_temp"
+  '';
+
   home-manager.sharedModules = [{
     # sometimes waybar starts before hyprland and then crashes
     # fix: just restart it until it works
