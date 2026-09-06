@@ -87,6 +87,7 @@
 
     home.packages = with pkgs; [
       android-tools
+      audacity
       chatterino7
       chromium
       discord
@@ -105,6 +106,7 @@
       mpv
       nicotine-plus
       nixpkgs-fmt
+      nmap
       nvtop
       openrgb
       openttd
@@ -118,10 +120,11 @@
       tageditor
       thunderbird
       timezonemap
+      umu-launcher
       wine
       wl-clipboard
       yt-dlp
-      nmap
+
       #fuck you microsoft
       dotnet-sdk_11
     ];
