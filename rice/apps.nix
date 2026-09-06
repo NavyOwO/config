@@ -20,6 +20,7 @@
     "steam-unwrapped"
     "wootility"
     "lunarclient"
+    "osu-lazer"
   ];
 
   hardware = {
@@ -107,6 +108,7 @@
       nvtop
       openrgb
       openttd
+      osu-lazer
       prismlauncher
       pulsemixer
       qbittorrent
