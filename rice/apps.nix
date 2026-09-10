@@ -54,6 +54,8 @@
         ".mozilla" = { };
         ".thunderbird" = { };
         ".var/app/org.vinegarhq.Sober" = { };
+        ".steam" = { };
+        ".wine" = { };
 
         ".local/share/Prismlauncher" = { };
         ".local/share/Steam" = { };
