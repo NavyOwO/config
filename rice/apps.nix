@@ -112,7 +112,6 @@
       nvtop
       openrgb
       openttd
-      osu-lazer
       prismlauncher
       pulsemixer
       qbittorrent
