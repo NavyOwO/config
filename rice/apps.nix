@@ -61,6 +61,7 @@
         ".local/share/openttd" = { };
         ".local/share/prismlauncher" = { };
         ".local/share/umu" = { };
+        ".local/share/osu" = { };
 
         "Games" = { };
         "KeptDownloads" = { };
