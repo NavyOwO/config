@@ -36,7 +36,11 @@
             font = "monospace:size=10.5";
             include = "${pkgs.foot.themes}/share/foot/themes/gruvbox-dark";
           };
-          colors-dark.alpha = "0.5";
+
+          colors-dark = {
+            alpha = "0.5";
+            blur = true;
+          };
         };
       };
 

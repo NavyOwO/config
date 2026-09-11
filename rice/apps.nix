@@ -15,12 +15,10 @@
   i18n.extraLocaleSettings.LC_TIME = "en_US.UTF-8";
 
   rice.unfreeNames = [
-    "discord"
     "steam"
     "steam-unwrapped"
     "wootility"
     "lunarclient"
-    "osu-lazer"
   ];
 
   hardware = {
@@ -37,7 +35,6 @@
       persist = {
         ".config/OpenRGB" = { };
         ".config/chromium" = { };
-        ".config/discord" = { };
         ".config/equibop" = { };
         ".config/heroic" = { };
         ".config/lunarclient" = { };
@@ -92,7 +89,6 @@
       audacity
       chatterino7
       chromium
-      discord
       equibop
       feh
       ffmpeg
