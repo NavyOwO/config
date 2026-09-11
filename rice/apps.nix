@@ -19,6 +19,7 @@
     "steam-unwrapped"
     "wootility"
     "lunarclient"
+    "osu-lazer-bin"
   ];
 
   hardware = {
@@ -66,6 +67,7 @@
         "OBS" = { };
         "VMstuff" = { };
         "CodeStuff" = { };
+        "OSUstuff" = { };
       };
 
       firefox = {
@@ -108,6 +110,7 @@
       nvtop
       openrgb
       openttd
+      osu-lazer-bin
       prismlauncher
       pulsemixer
       qbittorrent

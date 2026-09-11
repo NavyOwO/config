@@ -31,7 +31,7 @@
           };
         };
 
-        quantum = 8192;
+        quantum = 512;
         clock = 192000;
       in
       {
