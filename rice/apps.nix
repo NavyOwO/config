@@ -125,6 +125,7 @@
       wine
       wl-clipboard
       yt-dlp
+      zathura
 
       #fuck you microsoft
       dotnet-sdk_11
