@@ -37,6 +37,12 @@
         use-cgroups = true;
         experimental-features = [ "auto-allocate-uids" "cgroups" ];
       };
+
+      gc = {
+        automatic = true;
+        persistent = true;
+        dates = lib.mkDefault "monthly";
+      };
     };
   };
 }
