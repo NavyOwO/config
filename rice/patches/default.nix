@@ -2,6 +2,13 @@
   nixpkgs.overlays = lib.singleton (_: prev:
     let obscura = self.inputs.obscura.packages.${prev.stdenv.system}; in
     {
+
+      gomuks-web = prev.gomuks-web.overrideAttrs {
+        patches = [
+          ./gomuks-sso.patch
+        ];
+      };
+
       inherit (obscura)
         zfullfs
         ;
