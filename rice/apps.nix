@@ -66,6 +66,7 @@
 
         ".local/state/syncthing" = { };
 
+        "Exports" = { };
         "Games" = { };
         "KeptDownloads" = { };
         "OBS" = { };
