@@ -10,6 +10,7 @@
       };
 
       inherit (obscura)
+        molecule
         zfullfs
         ;
 

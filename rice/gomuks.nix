@@ -21,4 +21,17 @@
 
     wantedBy = [ "default.target" ];
   };
+
+  home-manager.sharedModules = [{
+    systemd.user.services.molecule = {
+      Install.WantedBy = [ "default.target" ];
+
+      Unit = {
+        After = [ "pipewire.service" ];
+        BindsTo = [ "pipewire.service" ];
+      };
+
+      Service.ExecStart = pkgs.lib.getExe pkgs.molecule;
+    };
+  }];
 }

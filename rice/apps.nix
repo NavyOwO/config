@@ -63,6 +63,8 @@
         ".local/share/umu" = { };
         ".local/share/osu" = { };
 
+        ".local/state/syncthing" = { };
+
         "Games" = { };
         "KeptDownloads" = { };
         "OBS" = { };
@@ -86,6 +88,8 @@
 
     home.pointerCursor.enable = true;
     services.mpd-discord-rpc.enable = true;
+    services.syncthing.enable = true;
+    programs.libreoffice.enable = true;
 
     home.packages = with pkgs; [
       android-tools
@@ -127,8 +131,6 @@
       wl-clipboard
       yt-dlp
       zathura
-      #fuck you microsoft
-      dotnet-sdk_11
     ];
 
     programs = {
