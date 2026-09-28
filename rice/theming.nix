@@ -42,9 +42,9 @@
 
     home = {
       pointerCursor = {
-        name = "Vanilla-DMZ";
+        name = "Bibata-Original-Classic";
         size = 24;
-        package = pkgs.vanilla-dmz;
+        package = pkgs.bibata-cursors;
         gtk.enable = true;
       };
 

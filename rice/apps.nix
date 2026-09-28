@@ -59,9 +59,10 @@
         ".local/share/Steam" = { };
         ".local/share/chatterino" = { };
         ".local/share/openttd" = { };
+        ".local/share/osu" = { };
         ".local/share/prismlauncher" = { };
         ".local/share/umu" = { };
-        ".local/share/osu" = { };
+        ".local/share/zathura" = { };
 
         ".local/state/syncthing" = { };
 
@@ -107,6 +108,7 @@
       krita
       libnotify
       lunar-client
+      mako
       mixxx
       mpd-discord-rpc
       mpv
