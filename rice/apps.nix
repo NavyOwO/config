@@ -3,10 +3,20 @@
     "/var/lib/flatpak" = { };
   };
 
-  programs.steam.enable = true;
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark;
+  programs = { 
+    steam.enable = true;
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+      # add other bs here if needed :)
+    ];
+  };
+
   };
 
   services.flatpak.enable = true;
@@ -88,10 +98,37 @@
       };
     };
 
-    home.pointerCursor.enable = true;
-    services.mpd-discord-rpc.enable = true;
-    services.syncthing.enable = true;
     programs.libreoffice.enable = true;
+    home.pointerCursor.enable = true;
+
+    services = { 
+      mpd-discord-rpc.enable = true;
+      syncthing.enable = true;
+
+      mako = {
+        enable = true;
+
+        settings = {
+          font = "Iosevka NF";
+          default-timeout = 70000;
+          background-color = "#282828a0";
+          text-color = "#eddbb2";
+          border-radius = 5;
+          border-color = "#ffffffc9";
+          icon-location = "left";
+          icon-border-radius = 999;
+          output = "HDMI-A-1";
+          layer = "overlay";
+          anchor = "top-right";
+          #on-notify = "exec mpv ${./notif.opus}";
+
+          "app-name=flameshot" = {
+            invisible = true;
+          };
+        };
+      };
+
+    };
 
     home.packages = with pkgs; [
       android-tools
@@ -109,7 +146,6 @@
       krita
       libnotify
       lunar-client
-      mako
       mixxx
       mpd-discord-rpc
       mpv
