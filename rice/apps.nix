@@ -9,14 +9,6 @@
       enable = true;
       package = pkgs.wireshark;
     };
-
-    nix-ld = {
-      enable = true;
-      libraries = with pkgs; [
-      # add other bs here if needed :)
-    ];
-  };
-
   };
 
   services.flatpak.enable = true;
@@ -30,6 +22,7 @@
     "wootility"
     "lunarclient"
     "osu-lazer-bin"
+    "p7zip"
   ];
 
   hardware = {
@@ -156,6 +149,7 @@
       openrgb
       openttd
       osu-lazer-bin
+      p7zip-rar
       prismlauncher
       pulsemixer
       qbittorrent
