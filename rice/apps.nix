@@ -58,12 +58,12 @@
         ".steam" = { };
         ".wine" = { };
 
-        ".local/share/Prismlauncher" = { };
+        ".local/share/PrismLauncher" = { };
+        ".local/share/Rhythia" = { };
         ".local/share/Steam" = { };
         ".local/share/chatterino" = { };
         ".local/share/openttd" = { };
         ".local/share/osu" = { };
-        ".local/share/prismlauncher" = { };
         ".local/share/umu" = { };
         ".local/share/zathura" = { };
 
@@ -103,8 +103,8 @@
 
         settings = {
           font = "Iosevka NF";
-          default-timeout = 70000;
-          background-color = "#282828a0";
+          default-timeout = 7000;
+          background-color = "#282828e6";
           text-color = "#eddbb2";
           border-radius = 5;
           border-color = "#ffffffc9";
