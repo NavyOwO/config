@@ -136,6 +136,7 @@
       grim
       heroic
       kdePackages.kdenlive
+      kdePackages.dolphin
       krita
       libnotify
       lunar-client
