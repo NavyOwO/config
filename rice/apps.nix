@@ -47,6 +47,9 @@
         ".config/openttd" = { };
         ".config/pulse" = { };
         ".config/wootility" = { };
+        ".config/GIMP" = { };
+        ".config/dolphinrc" = { };
+        ".config/kdenliverc" = { };
 
         ".mixxx" = { };
         ".java" = { };
