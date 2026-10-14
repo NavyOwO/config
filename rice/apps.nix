@@ -3,7 +3,7 @@
     "/var/lib/flatpak" = { };
   };
 
-  programs = { 
+  programs = {
     steam.enable = true;
     wireshark = {
       enable = true;
@@ -94,10 +94,9 @@
       };
     };
 
-    programs.libreoffice.enable = true;
     home.pointerCursor.enable = true;
 
-    services = { 
+    services = {
       mpd-discord-rpc.enable = true;
       syncthing.enable = true;
 
@@ -173,6 +172,8 @@
     programs = {
       jujutsu.settings.signing.key = lib.mkForce "~/.ssh/id_main";
 
+      libreoffice.enable = true;
+
       obs-studio = {
         enable = true;
 
@@ -180,6 +181,11 @@
           obs-pipewire-audio-capture
           obs-vkcapture
         ];
+      };
+
+      rmpc = {
+        enable = true;
+        config = builtins.readFile ./rmpc.ron;
       };
     };
 
