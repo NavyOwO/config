@@ -130,6 +130,7 @@
       audacity
       chatterino7
       chromium
+      depotdownloader
       equibop
       feh
       ffmpeg
@@ -137,8 +138,8 @@
       gimp
       grim
       heroic
-      kdePackages.kdenlive
       kdePackages.dolphin
+      kdePackages.kdenlive
       krita
       libnotify
       lunar-client
