@@ -1,9 +1,12 @@
-{ pkgs, lib, config, ... }: {
-  programs.hyprland.enable = true;
+{ pkgs, lib, ... }: {
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
+
   services.speechd.enable = false;
 
-
-  home-manager.sharedModules = lib.singleton (hm: {
+  home-manager.sharedModules = lib.singleton {
     aquaris.persist = {
       ".config/dconf" = { };
     };
@@ -64,5 +67,5 @@
         };
       };
     };
-  });
+  };
 }

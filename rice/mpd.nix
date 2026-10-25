@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  home-manager.sharedModules = lib.singleton (hm: {
+  home-manager.sharedModules = lib.singleton {
     aquaris.persist = {
       ".local/share/mpd" = { };
       "music" = { };
@@ -39,5 +39,5 @@
         main_window_color = "blue";
       };
     };
-  });
+  };
 }

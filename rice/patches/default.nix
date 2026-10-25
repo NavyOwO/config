@@ -6,6 +6,9 @@
 
       lixPackageSets.latest.__assign = prev.lixPackageSets.lix_2_96;
       lix.__assign = prev.lixPackageSets.lix_2_96.lix;
+
+      hyprland.__assign = self.inputs.obscura.inputs.nixpkgs.legacyPackages.${prev.stdenv.system}.hyprland;
+      hyprlandPlugins.__assign = obscura.my-hypr-plugins.entries;
     } // lib.mapAttrs (_: x: { __assign = x; }) {
       inherit (obscura)
         molecule

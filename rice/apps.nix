@@ -144,6 +144,7 @@
       libnotify
       lunar-client
       mixxx
+      mpc
       mpd-discord-rpc
       mpv
       nicotine-plus
