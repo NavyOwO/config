@@ -9,6 +9,14 @@
 
       hyprland.__assign = self.inputs.obscura.inputs.nixpkgs.legacyPackages.${prev.stdenv.system}.hyprland;
       hyprlandPlugins.__assign = obscura.my-hypr-plugins.entries;
+
+      gruvbox-gtk-theme.__output.patches.__assign = [ ];
+
+      ckan.__output.installPhase.__pipe = [
+        (lib.replaceString "--add-flags" ''
+          --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ prev.gtk2 ]} \
+          --add-flags'')
+      ];
     } // lib.mapAttrs (_: x: { __assign = x; }) {
       inherit (obscura)
         molecule

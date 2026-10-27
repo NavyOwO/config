@@ -29,6 +29,15 @@
   };
 
   services = {
+    auto-cpufreq = {
+      enable = true;
+    };
+
+    thermald = {
+      enable = true;
+      debug = true;
+    };
+
     scx = {
       enable = true;
       package = pkgs.scx.rustscheds;
@@ -42,7 +51,19 @@
     };
   };
 
+  # https://github.com/ValveSoftware/steam-for-linux/issues/11392#issuecomment-5016893671
+  environment.sessionVariables = {
+    __GL_SHADER_DISK_CACHE_SIZE = 10737418240;
+    __GL_SHADER_DISK_CACHE_SKIP_CLEANUP = 1;
+  };
+
   users.users = builtins.mapAttrs
     (_: _: { extraGroups = [ "gamemode" ]; })
     config.aquaris.users;
+
+  home-manager.sharedModules = [{
+    aquaris.persist = {
+      ".cache/nvidia" = { };
+    };
+  }];
 }

@@ -4,7 +4,14 @@
   };
 
   programs = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      package = pkgs.steam.override {
+        privateTmp = false;
+        extraBwrapArgs = [ "--bind /persist /persist" ];
+      };
+    };
+
     wireshark = {
       enable = true;
       package = pkgs.wireshark;
@@ -23,6 +30,8 @@
     "lunarclient"
     "osu-lazer-bin"
     "p7zip"
+    "modrinth-app"
+    "modrinth-app-unwrapped"
   ];
 
   hardware = {
@@ -61,6 +70,8 @@
         ".steam" = { };
         ".wine" = { };
 
+        ".local/share/CKAN" = {};
+        ".local/share/Euro Truck Simulator 2" = {};
         ".local/share/PrismLauncher" = { };
         ".local/share/Rhythia" = { };
         ".local/share/Steam" = { };
@@ -130,6 +141,7 @@
       audacity
       chatterino7
       chromium
+      ckan
       depotdownloader
       equibop
       feh
@@ -143,6 +155,8 @@
       krita
       libnotify
       lunar-client
+      mangohud
+      modrinth-app
       mixxx
       mpc
       mpd-discord-rpc
