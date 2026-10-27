@@ -30,8 +30,6 @@
     "lunarclient"
     "osu-lazer-bin"
     "p7zip"
-    "modrinth-app"
-    "modrinth-app-unwrapped"
   ];
 
   hardware = {
@@ -156,7 +154,6 @@
       libnotify
       lunar-client
       mangohud
-      modrinth-app
       mixxx
       mpc
       mpd-discord-rpc
