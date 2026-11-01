@@ -35,6 +35,7 @@
     "lunarclient"
     "osu-lazer-bin"
     "p7zip"
+    "vscode"
   ];
 
   hardware = {
@@ -182,6 +183,7 @@
       thunderbird
       timezonemap
       umu-launcher
+      vscode
       wine
       wl-clipboard
       yt-dlp

@@ -40,11 +40,11 @@
       '';
     };
 
-    virtualisation.libvirtd.hooks.qemu.windows = pkgs.writeShellScript "windows" ''
-      if [ "$1" = "win11" ] && [ "$2" = "release" ]; then
-        ${pkgs.systemd}/bin/systemctl reboot
-      fi
-    '';
+    # virtualisation.libvirtd.hooks.qemu.windows = pkgs.writeShellScript "windows" ''
+    #   if [ "$1" = "win11" ] && [ "$2" = "release" ]; then
+    #     ${pkgs.systemd}/bin/systemctl reboot
+    #   fi
+    # '';
   };
 }
 

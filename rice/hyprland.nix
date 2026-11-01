@@ -4,7 +4,7 @@
     withUWSM = true;
   };
 
-  services.speechd.enable = false;
+  services.speechd.enable = lib.mkForce false;
 
   home-manager.sharedModules = lib.singleton {
     aquaris.persist = {
