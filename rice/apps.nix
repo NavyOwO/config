@@ -20,7 +20,7 @@
 
   services.flatpak.enable = true;
 
-  virtualisation.waydroid = { 
+  virtualisation.waydroid = {
     enable = true;
     package = pkgs.waydroid-nftables;
   };
@@ -73,8 +73,8 @@
         ".steam" = { };
         ".wine" = { };
 
-        ".local/share/CKAN" = {};
-        ".local/share/Euro Truck Simulator 2" = {};
+        ".local/share/CKAN" = { };
+        ".local/share/Euro Truck Simulator 2" = { };
         ".local/share/PrismLauncher" = { };
         ".local/share/Rhythia" = { };
         ".local/share/Steam" = { };
