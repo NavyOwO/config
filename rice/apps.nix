@@ -88,6 +88,7 @@
         "VMstuff" = { };
         "CodeStuff" = { };
         "OSUstuff" = { };
+        "Movies" = { };
       };
 
       firefox = {
