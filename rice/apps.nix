@@ -20,6 +20,11 @@
 
   services.flatpak.enable = true;
 
+  virtualisation.waydroid = { 
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
+
   time.timeZone = "Europe/London";
   i18n.extraLocaleSettings.LC_TIME = "en_US.UTF-8";
 
