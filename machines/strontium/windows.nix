@@ -1,9 +1,24 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+let
+  inherit (lib) mkForce;
+  no = mkForce false;
+in
+{
   boot.kernelParams = [
     "intel_iommu=on"
     "iommu=pt"
     "pcie_acs_override=downstream,multifunction"
   ];
+
+  services.caddy = {
+    enable = true;
+
+    virtualHosts = {
+      "https://192.168.122.1:8080".extraConfig = ''
+        reverse_proxy localhost:37812
+      '';
+    };
+  };
 
   specialisation.windows.configuration = {
     boot = {
@@ -27,24 +42,57 @@
       '';
     };
 
-    systemd.services.start-windows = {
-      wantedBy = [ "multi-user.target" ];
+    systemd = {
+      services.start-windows = {
+        wantedBy = [ "multi-user.target" ];
 
-      after = [ "libvirtd.service" ];
-      wants = [ "libvirtd.service" ];
+        after = [ "libvirtd.service" ];
+        wants = [ "libvirtd.service" ];
 
-      path = with pkgs; [ libvirt ];
+        path = with pkgs; [ libvirt ];
 
-      script = ''
-        virsh -c qemu:///system start win11
+        script = ''
+          virsh -c qemu:///system start win11
+        '';
+      };
+
+      user = {
+        services = {
+          pipewire.enable = no;
+          pipewire-pulse.enable = no;
+          wireplumber.enable = no;
+        };
+
+        sockets = {
+          pipewire.enable = no;
+          pipewire-pulse.enable = no;
+        };
+      };
+    };
+
+    services = {
+      greetd.enable = no;
+      mullvad-vpn.enable = no;
+    };
+
+
+    virtualisation = {
+      waydroid.enable = no;
+
+      libvirtd.hooks.qemu.windows = pkgs.writeShellScript "windows" ''
+        if [ "$1" = "win11" ] && [ "$2" = "release" ]; then
+          ${pkgs.systemd}/bin/systemctl reboot
+        fi
       '';
     };
 
-    # virtualisation.libvirtd.hooks.qemu.windows = pkgs.writeShellScript "windows" ''
-    #   if [ "$1" = "win11" ] && [ "$2" = "release" ]; then
-    #     ${pkgs.systemd}/bin/systemctl reboot
-    #   fi
-    # '';
+    home-manager.sharedModules = [{
+      services = {
+        mpd.enable = no;
+        mpd-discord-rpc.enable = no;
+        syncthing.enable = no;
+      };
+    }];
   };
 }
 

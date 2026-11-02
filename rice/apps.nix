@@ -75,6 +75,7 @@
         ".wine" = { };
 
         ".local/share/CKAN" = { };
+        ".local/share/easyeffects" = { };
         ".local/share/Euro Truck Simulator 2" = { };
         ".local/share/PrismLauncher" = { };
         ".local/share/Rhythia" = { };
@@ -148,6 +149,7 @@
       chromium
       ckan
       depotdownloader
+      easyeffects
       equibop
       feh
       ffmpeg
@@ -194,6 +196,8 @@
       jujutsu.settings.signing.key = lib.mkForce "~/.ssh/id_main";
 
       libreoffice.enable = true;
+
+      qalculate.enable = true;
 
       obs-studio = {
         enable = true;
