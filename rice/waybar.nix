@@ -52,8 +52,6 @@ in
           "memory"
           "disk"
           "temperature"
-          "backlight"
-          "battery"
           "clock"
           "idle_inhibitor"
           "tray"
@@ -120,24 +118,6 @@ in
           format-critical = "{temperatureC}°C {icon}";
           format-icons = [ "" "" "" "" "" ];
           hwmon-path = "/dev/cpu_temp";
-        };
-
-        backlight = {
-          device = "amdgpu";
-          format = "{percent}% {icon}";
-          format-icons = [ "󰃚 " "󰃛 " "󰃜 " "󰃝 " "󰃞 " "󰃟 " "󰃠 " ];
-        };
-
-        battery = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-
-          format = "{time} {capacity}% {icon}";
-          format-charging = "{time} {capacity}% {icon} 󱐋";
-          format-plugged = "{capacity}%  ";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
 
         clock = {

@@ -3,7 +3,7 @@ let
   inherit (lib) mkForce;
   no = mkForce false;
 in
-{
+(_: { }) {
   boot.kernelParams = [
     "intel_iommu=on"
     "iommu=pt"

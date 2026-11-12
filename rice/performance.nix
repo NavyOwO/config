@@ -1,28 +1,25 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, self, ... }:
+let
+  mvs = import self.inputs.obscura.inputs.multiverse {
+    inherit (pkgs.stdenv) system;
+    inherit (pkgs) config;
+  };
+
+  pkgs' = mvs.at (mvs.revOf "linux_7_2" "7.2.15");
+in
+{
   aquaris.persist.dirs = {
     "/root/.cache/pandemonium" = { };
   };
 
-  boot =
-    let
-      pkgs' = pkgs;
+  boot = {
+    kernelPackages = pkgs'.linuxPackages_7_2;
 
-      # pkgs' = (import (builtins.fetchTarball {
-      #   url = "https://github.com/nixos/nixpkgs/tarball/9e09bc1f90dd4980521ff922d10d712ceb8a5a86";
-      #   sha256 = "sha256-Ewa/O6OlwvmoR9x53Emb3rAWlhM7MLZuw1jCYhaX6sU=";
-      # })) {
-      #   inherit (pkgs) config;
-      #   inherit (pkgs.stdenv) system;
-      # };
-    in
-    {
-      kernelPackages = pkgs'.linuxPackages_zen;
-
-      zfs = {
-        package = pkgs'.zfs;
-        forceImportRoot = true;
-      };
+    zfs = {
+      package = pkgs'.zfs;
+      forceImportRoot = true;
     };
+  };
 
   programs = {
     gamemode.enable = true;
@@ -38,10 +35,9 @@
       debug = true;
     };
 
-    scx = {
+    scx-loader = {
       enable = true;
-      package = pkgs.scx.rustscheds;
-      scheduler = "scx_pandemonium";
+      config.default_sched = "scx_pandemonium";
     };
 
     ananicy = {

@@ -22,6 +22,7 @@
   outputs = { aquaris, self, ... }: aquaris self rec {
     ssh = {
       logan = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMqocEF3jCw+ceawrvg7op0qLKrW32T/gip4oGtNq8ZA";
+      mel = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILxPD8M1DV0k5QY283lo0QIpmUYCjUlYvHwKYkk8j9Gn";
       nori = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBH2eZZkiQ53veJRiLi/JbVU/CD2oKC/TN7Ope3LiCChAAAABHNzaDo=";
     };
 
@@ -29,7 +30,7 @@
       logan = {
         description = "";
 
-        sshKeys = with ssh; [ logan nori ];
+        sshKeys = with ssh; [ logan mel nori ];
 
         git = {
           email = "loganabbitt@outlook.com";
