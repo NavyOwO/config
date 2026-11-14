@@ -62,15 +62,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(advice-add 'appt-check
-			:before
-			(lambda (&rest args)
-			  (org-agenda-to-appt t)))
-
-(appt-activate t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun nori/smart-home ()
   "Jump to beginning of line or first non-whitespace."
   (interactive)
@@ -85,21 +76,6 @@
   (join-line)
   (forward-line 1)
   (back-to-indentation))
-
-(defun my/open-config ()
-  "Opens Emacs configuration file"
-  (interactive)
-  (find-file "~/cfg/common/emacs/default.nix"))
-
-(defun my/open-cfg ()
-  "Opens common system configuration file"
-  (interactive)
-  (find-file "~/cfg/common/default.nix"))
-
-(defun my/open-todo ()
-  "Opens personal task list"
-  (interactive)
-  (find-file "~/org/todo.org"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

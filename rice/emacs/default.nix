@@ -35,6 +35,13 @@
         ".config/emacs" = { };
       };
 
+      hyprland = {
+        binds = f: with f; {
+          e = exec "emacsclient -nc";
+          S-e = exec "emacsclient -e '(save-buffers-kill-emacs)'";
+        };
+      };
+
       # emacs config
       emacs = {
         enable = true;
@@ -55,52 +62,23 @@
         };
 
         config = {
-
           emacs = {
             hook = ''
-                           ; delete trailing whitespace on save
-                           (before-save . delete-trailing-whitespace)
+              ;; delete trailing whitespace on save
+              (before-save . delete-trailing-whitespace)
 
-                           ; highlight space indents
-                           (font-lock-mode . nori/highlight-indent)
+              ;; highlight space indents
+              (font-lock-mode . nori/highlight-indent)
 
-                           ; highlight region, indent and trailing spaces
-                           (server-after-make-frame . (lambda ()
-                             (custom-set-faces
-                               '(region                 ((t (:background "#712246"))))
-                               '(whitespace-indentation ((t (:background "red"    ))))
-                               '(whitespace-trailing    ((t (:background "red"    ))))
-                               )))
-
-                           ;; un-german agenda view
-                           (server-after-make-frame . (lambda ()
-                             (custom-set-faces
-                               '(org-agenda-structure ((t
-                                 (:inherit    font-lock-comment-face
-                                  :foreground "#8ec07c"
-                                  :underline  t))))
-                               '(org-agenda-date-today ((t
-                                 (:foreground "#fdf4c1"
-                                  :slant      normal
-                                  :weight     bold))))
-                               '(org-scheduled-previously ((t
-                                 (:foreground "#edbdbb2"))))
-                               '(org-scheduled ((t
-                                 (:foreground "#d3869b"))))
-                               '(org-scheduled-today ((t
-                                 (:foreground "#d3869b"))))
-                               '(org-priority ((t
-                                 (:inherit font-lock-keyword-face
-                                  :foreground "#458588"))))
-                               '(org-imminent-deadline ((t
-              (:inherit   org-warning
-              :foreground "#fb4934"
-              :underline  t))))
-                               )))
+              ;; highlight region, indent and trailing spaces
+              (server-after-make-frame . (lambda ()
+                (custom-set-faces
+                  '(region                 ((t (:background "#712246"))))
+                  '(whitespace-indentation ((t (:background "red"    ))))
+                  '(whitespace-trailing    ((t (:background "red"    )))))))
             '';
 
             config = ''
-              (require 'notifications)
               (global-auto-revert-mode 1)
               (cua-mode 1)
 
@@ -116,21 +94,11 @@
               (set-frame-parameter nil 'alpha-background 50)
               (add-to-list 'default-frame-alist '(alpha-background . 50))
               (add-to-list 'default-frame-alist '(font . "monospace:size=14"))
-              (put 'list-timers 'disable nil)
-
-              ;; org-mode config config
-              (timeclock-reread-log)
-              (timeclock-mode-line-display 1)
-              (display-time-mode 1)
-
-              (set-face-foreground 'org-agenda-structure "#8ec07c")
-              (set-face-underline 'org-agenda-structure "#8ec07c")
-              (set-face-foreground 'org-agenda-date-today "#b8bb26")
             '';
 
             bind' = ''
-              ("C-a"     . nori/smart-home)
-              ("C-s"     . save-buffer)
+              ("C-a" . nori/smart-home)
+              ("C-s" . save-buffer)
 
               ("C-x C-f" . find-file)
               ("C-x C-l" . scratch-buffer)
@@ -168,86 +136,11 @@
 
               ("C-M-<backspace>" . nori/join-line)
 
-              ("C-t C-i" . timeclock-in)
-              ("C-t C-o" . timeclock-out)
-              ("C-t C-p" . timeclock-change)
-              ("C-t C-t" . (lambda () (interactive)
-                (message (timeclock-status-string))))
-
-              ("C-t <up>"   . org-priority-up)
-              ("C-t <down>" . org-priority-down)
-              ("C-c C-a"    . org-agenda)
-              ("C-t C-c"    . org-capture)
-              ("C-t C-s"    . org-todo)
-
               ("C-k" . consult-yank-from-kill-ring)
             '';
 
             custom = ''
-              ;; org-mode custom config
-
               (org-startup-indented t)
-              (org-agenda-files "/home/melinda/org/toplevel.txt")
-              (org-agenda-prefer-last-repeat t)
-              (org-return-follows-link t)
-              (org-agenda-start-on-weekday nil)
-              (org-agenda-start-day "-3d")
-
-              (org-capture-templates
-                '(("t" "Todo" entry (file+headline "~/org/todo.org" "Tasks")
-                "* TODO [#B] %? :sterm:short:leisure:\n:Created: %T\n")
-                ("r" "Recorring Task" entry (file+headline "~/org/todo.org" "Recurring")
-                "* TODO [#B] %? :short:work:\n:Created: %T\n")
-                ))
-
-              (org-todo-keywords
-                '((sequence "TODO(t)"
-                            "WIP(w!)"
-                            "BLOCKED(b@/!)"
-                            "|"
-                            "CANCELED(c@/!)"
-                            "DONE(d@/!)")))
-
-              (org-todo-keyword-faces '(
-                ("TODO"     . (:foreground "#cc241d" :weight bold))
-                ("WIP"      . (:foreground "#458588" :weight bold))
-                ("BLOCKED"  . (:foreground "#d65d0e" :weight bold))
-                ("CANCELED" . (:foreground "#928374" :weight bold))
-                ("DONE"     . (:foreground "#98971a" :weight bold))))
-
-              (org-tag-alist '(
-                ;; task size
-                (:startgroup . nil)
-                ("small"     . nil)
-                ("medium"    . nil)
-                ("large"     . nil)
-                (:endgroup   . nil)
-
-                ;; urgency
-                (:startgroup . nil)
-                ("sterm"     . nil)
-                ("mterm"     . nil)
-                ("lterm"     . nil)
-                (:endgroup   . nil)
-
-                ;; field
-                ("school"      . nil)
-                ("leisure"     . nil)
-                ("nori"        . nil)
-                ("work"        . nil)
-                ("programming" . nil)
-
-                ;; misc
-                ("afswe-relevant" . nil)
-                ("financial"      . nil)
-                ("recurring"      . nil)
-              ))
-
-              (org-tag-faces '(
-                ("short"  . (:foreground "#b8bb26" :weight bold))
-                ("medium" . (:foreground "#fabd2f" :weight bold))
-                ("long"   . (:foreground "#fb4934" :weight bold))
-                ("leisure". (:foreground "#bb77ff" :weight bold))))
 
               (recenter-positions '(middle top))
 
@@ -261,20 +154,7 @@
               (backup-directory-alist         `((".". ,my/temp-dir  )))
               (lock-file-name-transforms      `((".*" ,my/temp-dir t)))
 
-              (appt-message-warning-time 20)
-              (appt-display-interval 20)
-              (appt-display-mode-line nil)
-              (appt-disp-window-function
-                (lambda (remaining new-time msg)
-                  (notifications-notify
-                   :title (format "In %s minutes" remaining)
-                   :body (substring-no-properties msg)
-                   :urgency 'critical)))
-
               (fill-column 80)
-
-              (timeclock-workday 3600)
-              (timeclock-file "~/org/emacs-timelog")
 
               (mode-line-format
                '("%e" mode-line-front-space mode-line-mule-info mode-line-client
@@ -310,20 +190,6 @@
               (my/global-rainbow-delimiters-mode 1)
             '';
             custom = "(rainbow-delimiters-max-face-count 4)";
-          };
-
-          org-fancy-priorities = {
-            hook = ''
-              (org-mode . org-fancy-priorities-mode)
-            '';
-
-            custom = ''
-              (org-fancy-priorities-list '(
-                "DEFCON-1"
-                "STANDARD"
-                "ANYTIME"
-              ))
-            '';
           };
 
           # utility essentials
@@ -364,42 +230,6 @@
                 (push '(alpha-background . 100)
                        (plist-get (cdr args) :override-parameters))
                 args))
-            '';
-          };
-
-          jinx = {
-            hook = "typst-ts-mode org-mode text-mode";
-
-            bind' = ''
-              ("C-M-i" . jinx-correct)
-              ("C-M-n" . jinx-next)
-            '';
-
-            config = ''
-              (require 'vertico-multiform)
-              (add-to-list 'vertico-multiform-categories
-                '(jinx grid (vertico-grid-annotate . 20) (vertico-count . 4)))
-              (vertico-multiform-mode)
-
-              (add-to-list 'jinx-exclude-faces '(typst-ts-mode
-                font-lock-comment-face font-lock-string-face font-lock-doc-face font-lock-doc-markup-face
-                font-lock-warning-face font-lock-function-name-face font-lock-function-call-face
-                font-lock-variable-name-face font-lock-variable-use-face font-lock-keyword-face
-                font-lock-comment-delimiter-face font-lock-type-face font-lock-constant-face
-                font-lock-builtin-face font-lock-preprocessor-face
-                font-lock-negation-char-face font-lock-escape-face font-lock-number-face
-                font-lock-operator-face font-lock-property-use-face font-lock-punctuation-face
-                font-lock-bracket-face font-lock-delimiter-face font-lock-misc-punctuation-face
-                typst-ts-markup-item-indicator-face typst-ts-markup-term-indicator-face
-                typst-ts-markup-rawspan-indicator-face typst-ts-markup-rawspan-blob-face
-                typst-ts-markup-rawblock-indicator-face typst-ts-markup-rawblock-lang-face
-                typst-ts-markup-rawblock-blob-face
-                typst-ts-error-face typst-ts-shorthand-face typst-ts-markup-linebreak-face
-                typst-ts-markup-quote-face typst-ts-markup-url-face typst-ts-math-indicator-face))
-            '';
-
-            custom = ''
-              (jinx-languages "de_DE en_US")
             '';
           };
 
@@ -451,9 +281,6 @@
           flash = {
             bind' = ''
               ("M-c" . flash-jump)
-            '';
-
-            custom = ''
             '';
 
             custom-face = ''
@@ -587,70 +414,9 @@
             '';
           };
 
-
-          org-super-agenda = {
-            config = ''
-              (require 'org-super-agenda)
-              (org-super-agenda-mode 1)
-            '';
-
-            custom = ''
-              (org-agenda-custom-commands '(
-                 ("g" "Only Good View"
-                  (
-                   (agenda ""
-                           (
-                            (org-agenda-remove-tags t)
-                            (org-agenda-span 7)
-                            )
-                           )
-
-                   (alltodo ""
-                            (
-                             ;; Remove tags to make the view cleaner
-                             (org-agenda-remove-tags nil)
-                             (org-agenda-prefix-format "  %t  %s")
-                             (org-agenda-overriding-header "CURRENT STATUS")
-
-                             ;; Define the super agenda groups (sorts by order)
-                             (org-super-agenda-groups
-                              '(
-                                (:name "Today"
-                                  :date today)
-                                (:discard (
-                                  :tag "recurring"))
-                                (:name "DEFCON 1 DO IT NOW"
-                                  :priority "A"
-                                )
-                                (:name "In progress"
-                                  :todo "WIP"
-                                )
-                                (:name "School"
-                                  :tag "school"
-                                )
-                                (:name "Work"
-                                  :tag "work")
-                                (:name "Leisure"
-                                  :tag "leisure"
-                                  )
-                                )
-                              )
-                             )
-                            )
-                   ))
-                 ))
-            '';
-          };
-
-          # straight
-
           straight = {
             defer = true;
           };
-
-          # lsp stuff
-
-          uxntal-mode = { };
 
           go-mode = {
             defer = true;
@@ -674,25 +440,6 @@
 
             extraPackages = with pkgs; [
               shfmt
-            ];
-          };
-
-          web-mode = {
-            hook = "html-mode css-mode";
-
-            extraPackages = with pkgs; [
-              prettier
-              vscode-css-languageserver
-              vscode-html-languageserver
-            ];
-          };
-
-          typescript-mode = {
-            defer = true;
-
-            extraPackages = with pkgs; [
-              typescript_5
-              typescript-language-server
             ];
           };
 
@@ -756,44 +503,6 @@
             '';
           };
 
-          qml-ts-mode = {
-            mode = ''"\\.qml\\'"'';
-
-            config = ''
-              (require 'lsp-mode)
-              (add-to-list 'lsp-language-id-configuration '(qml-ts-mode . "qml-ts"))
-              (lsp-register-client
-               (make-lsp-client :new-connection (lsp-stdio-connection '("qmlls" "-E"))
-                                :activation-fn (lsp-activate-on "qml-ts")
-                                :server-id 'qmlls))
-              (add-hook 'qml-ts-mode-hook (lambda ()
-                                            (setq-local electric-indent-chars '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
-                                            (lsp-deferred)))
-
-              (require 'apheleia)
-              (add-to-list 'apheleia-mode-alist '(qml-ts-mode . qmlformat))
-              (add-to-list 'apheleia-formatters '(qmlformat "qmlformat" "--tabs" filepath))
-            '';
-
-            package = ep: ep.trivialBuild (drv: {
-              pname = "qml-ts-mode";
-              version = "0.1";
-
-              src = pkgs.fetchFromGitHub {
-                owner = "xhcoding";
-                repo = drv.pname;
-                rev = "b80c6663521b4d0083e416e6712ebc02d37b7aec";
-                hash = "sha256-WXK/CdFF9E2kG+uIios4HtKcEMhILS9MddJfVDeRLh0=";
-              };
-            });
-
-            extraPackages = with pkgs; [ kdePackages.qtdeclarative ];
-          };
-
-          lua-mode = {
-            extraPackages = with pkgs; [ stylua ];
-          };
-
           json-mode = {
             defer = true;
           };
@@ -817,14 +526,12 @@
               (read-process-output-max (* 1024 1024))
 
               (lsp-clients-clangd-args '("--header-insertion=never"))
-              (lsp-clients-lua-language-server-command "lua-language-server")
             '';
 
             hook = ''
               (c-mode          . lsp-deferred)
               (go-mode         . lsp-deferred)
               (sh-mode         . lsp-deferred)
-              (typescript-mode . lsp-deferred)
               (typst-ts-mode   . lsp-deferred)
 
               (lsp-managed-mode . (lambda ()
@@ -840,30 +547,11 @@
 
               (advice-add 'lsp-resolve-final-command :around
                 #'lsp-booster--advice-final-command)
-
-              (advice-add 'lsp-clients-lua-language-server-test :override
-                (lambda () t))
             '';
 
             extraPackages = with pkgs; [
               emacs-lsp-booster
             ];
-          };
-
-          lsp-pyright = {
-            defer = true;
-
-            hook = ''
-              (python-mode . (lambda ()
-                (require 'lsp-pyright)
-                (lsp-deferred)))
-            '';
-
-            custom = ''
-              (lsp-pyright-langserver-command "basedpyright")
-            '';
-
-            extraPackages = with pkgs; [ basedpyright ];
           };
 
           nix-mode = {

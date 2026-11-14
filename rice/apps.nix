@@ -123,9 +123,9 @@
         settings = {
           font = "Iosevka NF";
           default-timeout = 7000;
-          background-color = "#282828e6";
-          text-color = "#eddbb2";
-          border-radius = 5;
+          background-color = "#181818f2";
+          text-color = "#ebebe2";
+          border-radius = 3;
           border-color = "#ffffffc9";
           icon-location = "left";
           icon-border-radius = 999;

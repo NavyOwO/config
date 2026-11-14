@@ -34,7 +34,8 @@ in
       settings.mainBar = {
         layer = "top";
         position = "top";
-        spacing = 2;
+        height = 10;
+        spacing = 0;
         ipc = true;
 
         modules-left = [
@@ -46,14 +47,14 @@ in
         ];
 
         modules-right = [
-          "pulseaudio"
+          #"pulseaudio"
           "network"
           "cpu"
           "memory"
           "disk"
           "temperature"
           "clock"
-          "idle_inhibitor"
+          #"idle_inhibitor"
           "tray"
         ];
 

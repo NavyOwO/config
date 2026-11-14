@@ -1,59 +1,63 @@
 * {
-	font-family: sans-serif, monospace;
+	font-family: "Iosevka Nerd Font";
 	font-size: 13px;
+	color: #ebebe2;
+	min-height: 0;
 }
 
 window#waybar {
-	background-color: rgba(22, 40, 100, 0.95);
-	border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-	color: #ffffff;
 	transition-property: background-color;
 	transition-duration: 0.5s;
+
+	background-color: rgba(24, 24, 24, 0.95);
 }
 
-#workspaces button {
-	padding: 0 5px;
-	background-color: transparent;
-	color: #ffffff;
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+button {
 	/* Use box-shadow instead of border so the text isn't offset */
-	box-shadow: inset 0 -3px transparent;
-	/* Avoid rounded borders under each workspace name */
+	box-shadow: inset 0 -1px transparent;
 	border: none;
 	border-radius: 0;
+	/* Avoid rounded borders under each button name */
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-	background: rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0 -3px #ffffff;
+button:hover {
+	background: inherit;
+	box-shadow: inset 0 1px #ffffff;
 }
 
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+}
+
+#workspaces button {
+}
+
+#workspaces button:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused,
 #workspaces button.active {
-	background-color: #64727d;
-	box-shadow: inset 0 -3px #ffffff;
+	box-shadow: inset 0 -2px #ebebe2;
 }
 
 #workspaces button.urgent {
-	background-color: #eb4d4b;
 }
 
-#window,
-#workspaces {
-	margin: 0 4px;
+#mode {
+	box-shadow: inset 0 1px #ffffff;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-	margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-	margin-right: 0;
+#battery {
+	box-shadow: inset 0 1px #fb4934;
 }
 
 #clock,
-#battery,
 #cpu,
 #memory,
 #disk,
@@ -61,99 +65,80 @@ window#waybar {
 #backlight,
 #network,
 #pulseaudio,
+#wireplumber,
 #custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
 #mpd {
-	padding: 0 5px;
-	color: #000000;
-	border-radius: 5px;
+	padding: 0 10px;
+}
+
+#window,
+#workspaces {
+	margin: 0 3px;
+}
+
+.modules-left {
+}
+
+.modules-right {
+}
+
+#clock {
+}
+
+#battery {
+}
+
+#battery.charging,
+#battery.plugged {
 }
 
 @keyframes blink {
 	to {
-		background-color: red;
 	}
 }
 
-/* colors in module order */
-
-#mpd {
-	/*
-	background: linear-gradient(90deg,
-		#ff0000,
-		#ff8000,
-		#ffff00,
-		#80ff00,
-		#00ff00,
-		#00ff80,
-		#00ffff,
-		#0080ff,
-		#0000ff,
-		#8000ff,
-		#ff00ff,
-		#ff0080,
-		#ff0000
-	);
-	*/
-	background-color: #d30706;
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
-#pulseaudio {
-	background-color: #055df2;
-	color: #ffffff;
-}
-
-#network {
-	background-color: #226ff3;
+label:focus {
 }
 
 #cpu {
-	background-color: #3b81f5;
 }
 
 #memory {
-	background-color: #4f8df6;
 }
 
-#disk {
-	background-color: #7daaf8;
+#network {
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
 }
 
 #temperature {
-	background-color: #fbfaf6;
 }
 
 #temperature.critical {
-	animation: blink 0.5s linear infinite alternate;
 }
 
-#backlight {
-	background-color: #ffafc8;
-}
-
-#battery {
-	background-color: #74d7ee;
-}
-
-#battery.critical:not(.charging) {
-	animation: blink 0.5s linear infinite alternate;
-}
-
-#clock {
-	background-color: #7d7d7b;
-	color: #ffffff;
-}
-
-#idle_inhibitor {
-	background-color: #000000;
-	color: #ffffff;
-}
-
-#idle_inhibitor.activated {
-	background-color: #ffffff;
-	color: #000000;
+#tray {
 }
 
 #tray > .passive {
@@ -162,5 +147,17 @@ window#waybar {
 
 #tray > .needs-attention {
 	-gtk-icon-effect: highlight;
-	background-color: #eb4d4b;
+}
+
+#mpd {
+	border-bottom: 1px solid #bb77ff;
+}
+
+#mpd.disconnected {
+}
+
+#mpd.stopped {
+}
+
+#mpd.paused {
 }

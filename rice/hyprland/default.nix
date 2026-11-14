@@ -31,8 +31,8 @@
 
         events = f: with f; {
           "hyprland.start" = [
-            (exec "swaybg -o HDMI-A-1 -i config/wallpaper.png")
-            (exec "swaybg -o DP-2 -i config/wallpaper2.png")
+            (exec "swaybg -o HDMI-A-1 -i ~/config/wallpaper.png")
+            (exec "swaybg -o DP-2 -i ~/config/wallpaper2.png")
             (exec "equibop")
             (exec "steam")
 
