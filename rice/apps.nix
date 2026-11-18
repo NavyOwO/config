@@ -174,6 +174,7 @@
       openrgb
       openttd
       osu-lazer-bin
+      oversteer
       p7zip-rar
       prismlauncher
       pulsemixer
